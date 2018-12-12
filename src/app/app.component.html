@@ -1,0 +1,40 @@
+<header>
+  <h4>Angular Pagination Table</h4>
+</header>
+<div class="container-fliued">
+    <div class="col-md-12">
+        <form name="form"  novalidate>
+            <div class="form-group">
+                <input type="text" class="form-control" name="firstName" [(ngModel)]="searchTerm" (keyup)="onSearchChange(searchTerm)"  placeholder="Search Query"/>
+            </div>
+          </form>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Company</th>
+        <th>Mobile</th>
+        <th>Address</th>
+        <th>Location</th>
+        <th>Last Accessed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of products | paginate: { itemsPerPage: 7, currentPage: p }">
+        <td>{{item.name || '--'}}</td>
+        <td>{{item.email || '--'}}</td>
+        <td>{{item.companyName || '--'}}</td>
+        <td>{{item.contact || '--'}}</td>
+        <td>{{item.address || '--'}}</td>
+        <td>{{item.location.locationName || '--'}}</td>
+        <td>{{item.createdon || '--'}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="col-md-12">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+
+
